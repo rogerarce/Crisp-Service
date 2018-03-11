@@ -1,0 +1,5 @@
+type Query {
+  # ### Used to search
+  # ### products using product name
+  search(name: String!): [Product]
+}

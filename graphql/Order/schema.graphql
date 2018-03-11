@@ -1,0 +1,27 @@
+type Order {
+  id: ID!
+  quantity: Int!
+  price: Int!
+  item: [Product]!
+  order_number: Int!
+  created_at: String!
+  updated_at: String!
+}
+
+input OrderInput {
+  item: [Int]!
+  quantity: Int!
+  price: Int!
+  order_number: Int!
+}
+
+type Query {
+  # ### Fetch all orders 
+  # with options id argument
+  orders(id: ID): [Order]
+}
+
+type Mutation {
+  # ### Add new order
+  order(order: OrderInput): Order
+}

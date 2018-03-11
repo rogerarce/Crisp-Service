@@ -1,0 +1,28 @@
+# Persons Table
+personsTable:
+  Type: AWS::DynamoDB::Table
+  Properties:
+    TableName: persons
+    AttributeDefinitions:
+      - AttributeName: name
+        AttributeType: S
+    KeySchema:
+      - AttributeName: name
+        KeyType: HASH
+    ProvisionedThroughput:
+      ReadCapacityUnits: 1
+      WriteCapacityUnits: 1
+# Products Table
+productsTable:
+  Type: AWS::DynamoDB::Table
+  Properties:
+    TableName: products 
+    AttributeDefinitions:
+      - AttributeName: id 
+        AttributeType: N
+    KeySchema:
+      - AttributeName: id
+        KeyType: HASH
+    ProvisionedThroughput:
+      ReadCapacityUnits: 1
+      WriteCapacityUnits: 1

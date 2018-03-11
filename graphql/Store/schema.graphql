@@ -1,0 +1,60 @@
+input GeolocationInput {
+  lat: String!
+  lng: String!
+}
+
+input LocationInput {
+  address: String!
+  geolocation: GeolocationInput
+}
+
+input AvailabilityInput {
+  opens_at: String!
+  closes_at: String!
+  status: String!
+}
+
+input StoreInput {
+  name: String!
+  location: LocationInput!
+  availability: AvailabilityInput!
+  created_at: String!
+  updated_at: String!
+}
+
+type Geolocation {
+  lat: String!
+  lng: String!
+}
+
+type Location {
+  address: String!
+  geolocation: Geolocation
+}
+
+type Availability {
+  opens_at: String!
+  closes_at: String!
+  status: String!
+}
+
+type Store {
+  id: ID!
+  name: String!
+  location: Location!
+  availability: Availability!
+  rating: Int
+  created_at: String!
+  updated_at: String!
+}
+
+type Query {
+  # ### Fetch stores
+  # with optional id argument
+  stores(id: ID): [Store]
+}
+
+type Mutation {
+  # ### Add new store
+  store(store: StoreInput): Store
+}

@@ -1,0 +1,18 @@
+type Category {
+  name: String!
+}
+
+input CategoryInput {
+  name: String!
+}
+
+type Query {
+  # ### Fetch all categories
+  # with optional name argument
+  categories(name: String): [Category]
+}
+
+type Mutation {
+  # ### Add new category
+  category(category: CategoryInput!): Category
+}

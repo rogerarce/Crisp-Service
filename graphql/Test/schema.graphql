@@ -1,0 +1,21 @@
+type Person {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  # ### Get persons
+  #
+  # Parameters
+  # @param Person ID (optional)
+  persons(id: Int): [Person]
+}
+
+input PersonInput {
+  name: String!
+}
+
+type Mutation {
+  # ### Add new person
+  person(input: PersonInput): Person
+}

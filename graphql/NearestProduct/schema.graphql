@@ -1,0 +1,9 @@
+type NearestProduct {
+  products: [Product]!
+}
+
+type Query {
+  # ### Fetch all nearest products
+  # ## @Todo geohash should be required argument
+  nearest(geohash: String): NearestProduct
+}
