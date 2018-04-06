@@ -1,3 +1,5 @@
+require('dotenv').config({ path: './variables.env' })
+
 const server = require('apollo-server-lambda')
 import { makeExecutableSchema } from 'graphql-tools'
 import glue from 'schemaglue'
