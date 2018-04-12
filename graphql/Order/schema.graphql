@@ -15,6 +15,12 @@ input OrderInput {
   order_number: Int!
 }
 
+input OrderUpdateInput {
+  item: [Int]
+  quantity: Int
+  price: Int
+}
+
 type Query {
   # ### Fetch all orders 
   # with options id argument
@@ -23,5 +29,9 @@ type Query {
 
 type Mutation {
   # ### Add new order
-  order(order: OrderInput): Order
+  addOrder(order: OrderInput): Order
+  # ### Update order
+  updateOrder(id: ID!, order: OrderUpdateInput!): Order
+  # ### Remove order
+  removeOrder(id: ID!): Order
 }
