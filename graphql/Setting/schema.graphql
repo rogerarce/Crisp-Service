@@ -1,0 +1,27 @@
+type Setting {
+  id: ID!
+  radius: Int!
+  proximity: Int!
+}
+
+input SettingInput {
+  radius: Int,
+  proximity: Int!
+}
+
+input SettingUpdateInput {
+  radius: Int,
+  proximity: Int
+}
+
+type Query {
+  # Fetch Settings for specific user
+  getSettings(id: ID!): Setting
+}
+
+type Mutation {
+  # Set settings for specific user #### 
+  setSetting(setting: SettingInput!): Setting
+  # Update settings for specific user#### 
+  updateSetting(id: ID!, setting: SettingUpdateInput!): Setting
+}
