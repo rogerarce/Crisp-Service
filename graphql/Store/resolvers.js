@@ -1,41 +1,33 @@
-let storeMock = [{
-  id: 1,
-  name: 'Betty\'s Caffe',
-  location: {
-    address: 'Tacloban City',
-    gelocation: {
-      lat: '11.254339',
-      lng: '124.961687',
-    }
-  },
-  availability: {
-    opens_at: '08:30',
-    closes_at: '09:00',
-    status: 'open'
-  },
-  rating: 100,
-  created_at: '2018-01-02',
-  updated_at: '2018-01-02',
-}]
+const db = require('../../lib/db.js')
+const Store = require('../../models/Store.js')
 
 exports.resolver = {
   Query: {
     stores(roots, { id }, context) {
-      let result = id ? storeMock.filter(s => s.id = id) : storeMock
-
-      if (result.length > 0)
-        return result
-      else
-        throw new Error(`Store with id of ${id} does not exist`)
+      return db()
+        .then(() => Store.find())
+        .then(stores => stores)
+        .catch(err => console.error(err))
     }
   },
   Mutation: {
-    store(roots, { store }, context) {
-      store.created_at = '2018-03-20'
-      store.updated_at = '2018-03-20'
-      storeMock.push(store)
-
-      return store
+    addStore(roots, { store }, context) {
+      return db()
+        .then(() => Store.create(store))
+        .then(store => store)
+        .catch(err => console.error(err))
+    },
+    updateStore(roots, { id, store }, context) {
+      return db()
+        .then(() => Store.findByIdAndUpdate(id, store, { new: true }))
+        .then(store => store)
+        .catch(err => console.error(err))
+    },
+    removeStore(roots, { id }, context) {
+      return db()
+        .then(() => Store.findByIdAndRemove(id))
+        .then(store => store)
+        .catch(err => console.error(err))
     }
   }
 }

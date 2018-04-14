@@ -17,7 +17,6 @@ service: service
 
 plugins:
   - serverless-webpack
-  - serverless-dynamodb-local
   - serverless-offline
 
 custom:
@@ -125,8 +124,8 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-resources:
-  Resources: ${file(env/dynamodb.yml)}
+# resources:
+#   Resources: ${file(env/dynamodb.yml)}
 #    NewResource:
 #      Type: AWS::S3::Bucket
 #      Properties:

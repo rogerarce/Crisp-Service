@@ -78,7 +78,9 @@ var _schemaglue2 = _interopRequireDefault(_schemaglue);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var server = __webpack_require__(3);
+__webpack_require__(3).config({ path: './variables.env' });
+
+var server = __webpack_require__(4);
 
 var _glue = (0, _schemaglue2.default)('graphql'),
     schema = _glue.schema,
@@ -106,6 +108,12 @@ module.exports = require("schemaglue");
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("dotenv");
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = require("apollo-server-lambda");

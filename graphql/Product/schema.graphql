@@ -15,6 +15,14 @@ input ProductInput {
   price: Int!
 }
 
+input ProductUpdateInput {
+  name: String
+  description: String
+  price: Int
+  rating: Int
+  status: String
+}
+
 type Query {
   # ### Get all products
   # with optional id parameter
@@ -22,6 +30,10 @@ type Query {
 }
 
 type Mutation {
-  # ### Add new product
+ # ### Add new product
  product(product: ProductInput!): Product
+ # ### Update product 
+ updateProduct(id: ID!, product: ProductUpdateInput!): Product
+ # ### Remove product 
+ removeProduct(id: ID!): Product
 }
