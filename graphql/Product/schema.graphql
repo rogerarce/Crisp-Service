@@ -1,18 +1,40 @@
+enum Status {
+  AVAILABLE
+  UNAVAILABLE
+  LOW
+}
+
+type Image {
+  small: String!
+  medium: String!
+  large: String!
+}
+
 type Product {
   id: ID!
   name: String!
   description: String!
   price: Int!
   rating: Int
-  status: String!
+  status: Status!
+  image: Image!
   created_at: String!
   updated_at: String!
+}
+
+input ImageInput {
+  small: String
+  medium: String
+  large: String
 }
 
 input ProductInput {
   name: String!
   description: String!
   price: Int!
+  rating: Int!
+  status: Status!
+  image: ImageInput!
 }
 
 input ProductUpdateInput {
@@ -20,7 +42,8 @@ input ProductUpdateInput {
   description: String
   price: Int
   rating: Int
-  status: String
+  status: Status 
+  image: ImageInput
 }
 
 type Query {
